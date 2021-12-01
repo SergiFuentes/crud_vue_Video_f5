@@ -26,13 +26,15 @@ export default {
       mode : "add",
       newMovie: {},
       msg: "Lista de Pelis",
-      movies: [{ title: "batman" }, { title: "batman Returns" }],
+      movies: [],
     };
   },
-  /*mounted(){
-        axios.get('http://localhost3000/peliculas').then()
-        console.log("hola");
-    }*/
+  mounted(){
+    axios
+      .get('http://localhost3000/peliculas')
+      .then((res) => console.log(res));
+    console.log("hola");
+    },
   methods: {
     addMovie() {
       //this.movies.push(this.newMovie);
