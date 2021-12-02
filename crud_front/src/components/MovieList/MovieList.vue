@@ -30,9 +30,7 @@ export default {
     };
   },
   mounted(){
-    axios
-      .get('http://localhost3000/peliculas')
-      .then((res) => console.log(res));
+    axios.get('http://localhost:3000/peliculas').then((res) => (this.movies = res.data)).// then(res=>console.log(res));
     console.log("hola");
     },
   methods: {
