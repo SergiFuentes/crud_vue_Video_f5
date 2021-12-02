@@ -19,6 +19,7 @@
 
 <script>
 import axios from "axios";
+import {moviesApiService} from '@/services/moviesApiService.js'
 export default {
   data() {
     return {
@@ -30,19 +31,23 @@ export default {
     };
   },
   mounted(){
-    axios.get('http://localhost:3000/peliculas').then((res) => (this.movies = res.data)).// then(res=>console.log(res));
-    console.log("hola");
+    this.fetchAll();
     },
   methods: {
     addMovie() {
       //this.movies.push(this.newMovie);
       if (!this.newMovie.title) return;
-      this.movies = [...this.movies, this.newMovie];
+      moviesApiService.create(this.newMovie);
+      //this.movies = [...this.movies, this.newMovie];
+      this.fetchAll();
       this.newMovie = {};
     },
     removeMovie(index) {
       //alert(index);
-      this.movies.splice(index, 1);
+      const id = this.movies[index].id;
+      moviesApiService.deleteById(id);
+      //this.movies.splice(index, 1);
+      this.fetchAll();
     },
     editMovie(index) {
       this.newMovie = this.movies[index];
@@ -57,7 +62,13 @@ export default {
         this.newMovie = {};
         this.mode = "add";
         this.indexToUpdate = "";
-    }
+    },
+    fetchAll(){
+      axios.get('http://localhost:3000/peliculas').then((res) =>(this.movies = res.data))//.then(res=>console.log(res));
+    },
+    
+    
+ 
   },
 };
 </script>

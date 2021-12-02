@@ -1,34 +1,12 @@
- {
-     "peliculas": [
-        {
-            "id": 1,
-            "title": "Terminator",
-            "year": 1000,
-            "director": "Spilbarg"
-        },
-        {
-            "id": 2,
-            "title": "Terminator-2",
-            "year": 2000,
-            "director": "Spilberg"
-        },
-        {
-            "id": 3,
-            "title": "Terminator-3",
-            "year": 3000,
-            "director": "Spilbirg"
-        },
-        {
-            "id": 4,
-            "title": "Terminator-4",
-            "year": 4000,
-            "director": "Spilborg"
-        },
-        {
-            "id": 5,
-            "title": "Terminator-5",
-            "year": 5000,
-            "director": "Spilburg"
-        }
-    ]
- }
+{
+  "peliculas": [
+    {
+      "id": 1,
+      "title": "Terminator"
+    },
+    {
+      "title": "Terminator II",
+      "id": 2
+    }
+  ]
+}
