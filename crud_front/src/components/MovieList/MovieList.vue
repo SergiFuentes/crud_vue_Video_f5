@@ -34,6 +34,9 @@ export default {
     this.fetchAll();
     },
   methods: {
+    fetchAll(){
+      axios.get('http://localhost:3000/peliculas').then((res) =>(this.movies = res.data))//.then(res=>console.log(res));
+    },
     addMovie() {
       //this.movies.push(this.newMovie);
       if (!this.newMovie.title) return;
@@ -51,24 +54,24 @@ export default {
     },
     editMovie(index) {
       this.newMovie = this.movies[index];
-      console.log(this.newMovie);
+      //console.log(this.newMovie);
       //this.newMovie.index = index;
       this.indexToUpdate = index;
       this.mode = 'edit';
     },
     updateMovie(){
         //alert ('update');
-        this.movies[this.indexToUpdate] = this.newMovie;
+        //this.movies[this.indexToUpdate] = this.newMovie;
+        const id = this.movies[this.indexToUpdate].id;
+        //const newMovie = this.newMovie;
+        moviesApiService.changeById(id, this.newMovie);
+        
         this.newMovie = {};
         this.mode = "add";
-        this.indexToUpdate = "";
-    },
-    fetchAll(){
-      axios.get('http://localhost:3000/peliculas').then((res) =>(this.movies = res.data))//.then(res=>console.log(res));
+        this.fetchAll();
+        //this.indexToUpdate = "";
     },
     
-    
- 
   },
 };
 </script>
